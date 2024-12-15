@@ -76,7 +76,8 @@ temperatura in celsius: ${data.current.temp_c}<br>
 umidità: ${data.humidity}<br>
 è giorno?: ${data.current.is_day}<br>
 <img src = "//cdn.weatherapi.com/weather/64x64/night/113.png"><br>
-`
+`;
+updateAllarme();
 
         })
         .catch(error => {
@@ -86,10 +87,6 @@ umidità: ${data.humidity}<br>
             }else
                 alert('Error:', error);
         });
-
-
-
-    updateAllarme();
 
 }
 
