@@ -45,8 +45,8 @@ function updateAllarme() {
 }
 
 function cercaLuogo(){
-
-    const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=50aeef4823b642bfa16171055241012&q=London&aqi=no';
+    const citta = getElementById("barraRicerca").value;
+    const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=50aeef4823b642bfa16171055241012&q=' + citta + '&aqi=no';
 
     fetch(apiUrl)
         .then(response => {
