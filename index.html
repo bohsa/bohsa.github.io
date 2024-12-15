@@ -45,9 +45,9 @@ function updateAllarme() {
 }
 
 function cercaLuogo(){
-    alert(0);
+
     const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=50aeef4823b642bfa16171055241012&q=Dakar&aqi=no';
-    alert(1);
+
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
@@ -56,13 +56,13 @@ function cercaLuogo(){
         })
         .then(data => {
             // Display data in an HTML element
-            alert(2);
-            document.getElementById("area_risultati").innerHTML = JSON.stringify(data, null, 2);
+
+            var answer = data;
+            console.log(data);
         })
         .catch(error => {
         alert('Error:', error);
     });
-    alert(3);
 
 
 
