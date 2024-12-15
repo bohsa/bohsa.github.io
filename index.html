@@ -57,7 +57,7 @@ function cercaLuogo(){
         })
         .then(data => {
             const temperature = data.current.temp_c; // Get the temperature in Celsius
-            alert(`The current temperature in Dakar is ${temperature}°C`);
+            alert(`The current temperature in ${citta} is ${temperature}°C`);
         })
         .catch(error => {
             alert('Error:', error);
