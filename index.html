@@ -20,7 +20,7 @@
                 <img src="idle_pic.jpg" height = "80%" width = "80%" id = "ALLARME">
             </div>
             <div class = "risultatiRicerca">
-                <p id = "area_risultati">mieo</p>
+                <p id = "area_risultati">dopo che cerchi un posto avrai qui tute le info</p>
             </div>
         </div>
         
@@ -64,9 +64,28 @@ function cercaLuogo(){
             }else{
                 statoAllarme = 1;
             }
+
+            var risultati_area_risultati = document.getElementById("area_risultati");
+
+            risultati_area_risultati.innerHTML = 
+`nome luogo: ${data.location.name}<br>
+regione: ${data.location.region}<br>
+nazione: ${data.location.country}<br>
+orario locale: ${data.locatio.localtime}<br>
+ultimo aggiornamento dati: ${data.current.last_updated}<br>
+temperatura in celsius: ${data.current.temp_c}<br>
+umidità: ${data.humidity}<br>
+è giorno?: ${data.current.is_day}<br>
+<img src = "//cdn.weatherapi.com/weather/64x64/night/113.png"><br>
+`
+
         })
         .catch(error => {
-            alert('Error:', error);
+            if(error.message == "No matching location found."){
+                document.getElementById("area_risultati").innerHTML = 
+`<img src = "https://i.pinimg.com/236x/41/ce/54/41ce540e150c4e3f40fad047fbaa7625.jpg"><br>luogo non trovato, riprova con un altro nome, magari una città più grande nelle vicinanze`;
+            }else
+                alert('Error:', error);
         });
 
 
