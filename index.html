@@ -65,7 +65,7 @@ function cercaLuogo(){
             }
 
             var risultati_area_risultati = document.getElementById("area_risultati");
-
+            alert(1);
             risultati_area_risultati.innerHTML = 
 `nome luogo: ${data.location.name}<br>
 regione: ${data.location.region}<br>
@@ -77,15 +77,19 @@ umidità: ${data.humidity}<br>
 è giorno?: ${data.current.is_day}<br>
 <img src = "//cdn.weatherapi.com/weather/64x64/night/113.png"><br>
 `;
+alert(2);
 updateAllarme();
-
+alert(3);
         })
         .catch(error => {
+            alert(4)''
             if(error.message == "No matching location found."){
                 document.getElementById("area_risultati").innerHTML = 
 `<img src = "https://i.pinimg.com/236x/41/ce/54/41ce540e150c4e3f40fad047fbaa7625.jpg"><br>luogo non trovato, riprova con un altro nome, magari una città più grande nelle vicinanze`;
-            }else
-                alert('Error:', error);
+            alert(5);
+        }
+            else
+                alert('Error:', error.message);
         });
 
 }
