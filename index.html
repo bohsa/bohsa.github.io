@@ -13,7 +13,7 @@
         <div class = "ricerca">
             <textarea id = "barraRicerca" name = "barraRicerca" rows = "1"  columns = "30"></textarea>
             <input name = "bottoneRicerca" type = "button" onclick = "cercaLuogo();" value = "cerca" class = "pulsanteRicerca"><br>
-            <small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>
+            <small>non si aggiorna la gaina con le info desiderate? clicca <a href="help.html">qui</a></small>
         </div>
         <div class = "risultati">
             <div class = "allarme">
@@ -52,10 +52,6 @@ function cercaLuogo(){
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            if (response.status === 400) {
-                document.getElementById("area_risultati").innerHTML = 
-                `<small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>`;
             }
             return response.json();
         })
