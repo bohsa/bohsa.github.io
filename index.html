@@ -13,7 +13,6 @@
         <div class = "ricerca">
             <textarea id = "barraRicerca" name = "barraRicerca" rows = "1"  columns = "30"></textarea>
             <input name = "bottoneRicerca" type = "button" onclick = "cercaLuogo();" value = "cerca" class = "pulsanteRicerca"><br>
-            <small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>
         </div>
         <div class = "risultati">
             <div class = "allarme">
@@ -56,6 +55,18 @@ function cercaLuogo(){
             return response.json();
         })
         .then(data => {
+
+            if (data.error) {
+                // Se errore 1006 (nessun luogo trovato), mostra un messaggio
+                if (data.error.code == 1006) {
+                    document.getElementById("area_risultati").innerHTML = 
+                        `<small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>`;
+                } else {
+                    alert('Errore: ' + data.error.message);  // Altri errori
+                }
+                return;
+            }
+
             const temperature = data.current.temp_c;
             const humidity = data.current.humidity;
             console.log(`temp: ${temperature}, humi: ${humidity}\n`);
@@ -80,12 +91,7 @@ umidità: ${data.current.humidity}%<br>
             updateAllarme();
         })
         .catch(error => {
-            if(error.error.code == 1006){
-                document.getElementById("area_risultati").innerHTML = 
-`<img src = "https://i.pinimg.com/236x/41/ce/54/41ce540e150c4e3f40fad047fbaa7625.jpg"><br>luogo non trovato, riprova con un altro nome, magari una città più grande nelle vicinanze`;
-        }
-            else
-                alert('Error:', error.error.message);
+            console.error('Error:', error);
         });
 
 }
