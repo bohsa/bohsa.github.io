@@ -51,20 +51,17 @@ function cercaLuogo(){
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                alert('Network response was not ok');
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            return response.json();
         })
         .then(data => {
-            // Display data in an HTML element
-            alert(1);
-            var answer = data;
-            alert(2);
-            console.log(answer);
-            alert(3);
+            const temperature = data.current.temp_c; // Get the temperature in Celsius
+            alert(`The current temperature in Dakar is ${temperature}°C`);
         })
         .catch(error => {
-        alert('Error:', error);
-    });
+            alert('Error:', error);
+        });
 
 
 
