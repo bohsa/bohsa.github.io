@@ -27,12 +27,12 @@ body, html {
 }
 
 .logo {
-    width: 20%; /* Occupa il 20% della larghezza della pagina */
+    width: 20%;
     font-size: 2rem;
 }
 
 .nome {
-    width: 70%; /* Occupa il 70% della larghezza della pagina */
+    width: 70%;
     text-align: center;
     font-size: 1.5rem;
 }
@@ -45,6 +45,41 @@ body, html {
     text-align: center;
     font-size: 1rem;
     margin-bottom: 1%;
+    position: relative; /* Permette di posizionare elementi in modo specifico */
+    height: 100px; /* Aumenta l'altezza del rettangolo grigio */
+}
+
+.ricerca textarea {
+    width: 60%;
+    height: 1.8em; /* Riduce l'altezza della barra di ricerca */
+    margin-bottom: 0.5em;
+}
+
+.ricerca .pulsanteRicerca {
+    height: 2em; /* Riduce l'altezza del pulsante cerca */
+    color: darkslategrey;
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 0 1em;
+    margin-left: 0.5em;
+}
+
+.ricerca small {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
+
+.ricerca a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ricerca a:hover {
+    text-decoration: underline;
 }
 
 /* Contenitore dei risultati */
@@ -58,8 +93,8 @@ body, html {
 
 /* Allarme */
 .allarme {
-    width: 25%; /* Occupa il 25% della larghezza */
-    height: 30%; /* Occupa il 30% dell'altezza dello schermo */
+    width: 25%;
+    height: 30%;
     background-color: #ffcccc;
     margin: 1%;
     text-align: center;
@@ -70,19 +105,12 @@ body, html {
 
 /* Risultati ricerca */
 .risultatiRicerca {
-    width: 70%; /* Occupa il restante spazio */
+    width: 70%;
     margin: 1%;
     padding: 2%;
-    background-color: #f4f4f4; /* Grigio chiaro */
+    background-color: #f4f4f4;
     height: auto;
-    overflow-y: auto; /* Per gestire contenuti lunghi */
+    overflow-y: auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-}
-
-.pulsanteRicerca{
-    width: 8%;
-    height: 100%;
-    color: darkslategrey;
-    background-color: whitesmoke;
 }
