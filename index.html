@@ -80,7 +80,7 @@ umidità: ${data.current.humidity}%<br>
             updateAllarme();
         })
         .catch(error => {
-            if(error.errpr.code == 1006){
+            if(error.error.code == 1006){
                 document.getElementById("area_risultati").innerHTML = 
 `<img src = "https://i.pinimg.com/236x/41/ce/54/41ce540e150c4e3f40fad047fbaa7625.jpg"><br>luogo non trovato, riprova con un altro nome, magari una città più grande nelle vicinanze`;
         }
