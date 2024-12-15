@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+    <div class = "main_container">
+        <link rel="stylesheet" href="styles.css">
+        <div class= "intestazione">
+             <div class = "logo"><center>logo</center></div>
+             <div class = "nome"><center>nome</center></div>
+        </div>
+    
+
+    
+        <div class = "ricerca">
+            <textarea name = "barraRicerca" rows = "1"  columns = "30"></textarea>
+            <input name = "bottoneRicerca" type = "button" onclick = "cercaLuogo();" value = "cerca" class = "pulsanteRicerca">
+        </div>
+        <div class = "risultati">
+            <div class = "allarme">
+                gatto di merda<br><br>
+                <img src="idle_pic.jpg" height = "80%" width = "80%" id = "ALLARME">
+            </div>
+            <div class = "risultatiRicerca">
+                <p id = "area_risultati">mieo</p>
+            </div>
+        </div>
+        
+    </div>
+
+</html>
+
+<script>
+//onclick='updateAllarme(this);'
+var statoAllarme = 0; //0 = idle, 1 = no pericolo, 2 = si pericolo
+
+function updateAllarme() {
+    statoAllarme++;
+    if(statoAllarme == 0){
+        document.getElementById("ALLARME").src = "idle_pic.jpg";
+        document.getElementById("area_risultati").innerHTML = "guarda qui a sinistra"
+    }else if(statoAllarme == 1){
+        document.getElementById("ALLARME").src = "NESSUN_RISCHIO.jpg";
+    }else if(statoAllarme == 2){
+        document.getElementById("ALLARME").src = "ATTENTO.jpg";
+        statoAllarme = -1;
+    }
+}
+
+function cercaLuogo(){
+
+
+
+    updateAllarme();
+
+}
+
+</script>
