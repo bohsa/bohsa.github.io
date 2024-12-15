@@ -74,7 +74,7 @@ ultimo aggiornamento dati: ${data.current.last_updated}<br>
 temperatura in celsius: ${data.current.temp_c}<br>
 umidità: ${data.current.humidity}%<br>
 è giorno?: ${data.current.is_day}<br>
-<img src = "//cdn.weatherapi.com/weather/64x64/night/113.png"><br>
+<img src = "${data.current.condition.icon}"><br>
 `;
             updateAllarme();
         })
