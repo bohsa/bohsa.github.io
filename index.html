@@ -16,7 +16,7 @@
         </div>
         <div class = "risultati">
             <div class = "allarme">
-                gatto di merda<br><br>
+                allarme:<br><br>
                 <img src="idle_pic.jpg" height = "80%" width = "80%" id = "ALLARME">
             </div>
             <div class = "risultatiRicerca">
@@ -56,8 +56,13 @@ function cercaLuogo(){
             return response.json();
         })
         .then(data => {
-            const temperature = data.current.temp_c; // Get the temperature in Celsius
-            alert(`The current temperature in ${citta} is ${temperature}°C`);
+            const temperature = data.current.temp_c;
+            const humidity = data.humidity;
+            if(temperature < 5.5 && humidity > 50){
+                statoAllarme = 2;
+            }else{
+                statoAllarme = 1;
+            }
         })
         .catch(error => {
             alert('Error:', error);
