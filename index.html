@@ -58,7 +58,7 @@ function cercaLuogo(){
         .then(data => {
             const temperature = data.current.temp_c;
             const humidity = data.humidity;
-            console.log("temp: ${temperature}, humi: ${humidity}\n");
+            console.log("temp: &{temperature}, humi: &{humidity}\n");
             if(temperature < 5.5 && humidity > 50){
                 statoAllarme = 2;
             }else{
