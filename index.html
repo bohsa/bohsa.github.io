@@ -47,6 +47,23 @@ function updateAllarme() {
 
 function cercaLuogo(){
 
+    const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=50aeef4823b642bfa16171055241012&q=Dakar&aqi=no';
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Display data in an HTML element
+            document.getElementById("area_risultati").innerHTML = = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+        console.error('Error:', error);
+    });
+
 
 
     updateAllarme();
