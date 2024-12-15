@@ -46,16 +46,17 @@ body, html {
     font-size: 1rem;
     margin-bottom: 1%;
     position: relative; /* Permette di posizionare elementi in modo specifico */
+    height: 100px; /* Aumenta l'altezza del rettangolo grigio */
 }
 
 .ricerca textarea {
     width: 60%;
-    height: 2em;
+    height: 1.8em; /* Riduce l'altezza della barra di ricerca */
     margin-bottom: 0.5em;
 }
 
 .ricerca .pulsanteRicerca {
-    height: 2.5em;
+    height: 2em; /* Riduce l'altezza del pulsante cerca */
     color: darkslategrey;
     background-color: whitesmoke;
     border: 1px solid #ccc;
