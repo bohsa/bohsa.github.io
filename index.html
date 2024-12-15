@@ -33,10 +33,9 @@
 var statoAllarme = 0; //0 = idle, 1 = no pericolo, 2 = si pericolo
 
 function updateAllarme() {
-    statoAllarme++;
     if(statoAllarme == 0){
         document.getElementById("ALLARME").src = "idle_pic.jpg";
-        document.getElementById("area_risultati").innerHTML = "guarda qui a sinistra"
+        //document.getElementById("area_risultati").innerHTML = "guarda qui a sinistra"
     }else if(statoAllarme == 1){
         document.getElementById("ALLARME").src = "NESSUN_RISCHIO.jpg";
     }else if(statoAllarme == 2){
@@ -61,7 +60,7 @@ function cercaLuogo(){
             document.getElementById("area_risultati").innerHTML = = JSON.stringify(data, null, 2);
         })
         .catch(error => {
-        console.error('Error:', error);
+        alert('Error:', error);
     });
 
 
