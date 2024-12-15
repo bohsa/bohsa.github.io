@@ -53,20 +53,13 @@ function cercaLuogo(){
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            if (response.status === 400) {
+                document.getElementById("area_risultati").innerHTML = 
+                `<small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>`;
+            }
             return response.json();
         })
         .then(data => {
-
-            if (data.error) {
-                // Se errore 1006 (nessun luogo trovato), mostra un messaggio
-                if (data.error.code == 1006) {
-                    document.getElementById("area_risultati").innerHTML = 
-                        `<small>non trovi il posto desiderato? clicca <a href="help.html">qui</a></small>`;
-                } else {
-                    alert('Errore: ' + data.error.message);  // Altri errori
-                }
-                return;
-            }
 
             const temperature = data.current.temp_c;
             const humidity = data.current.humidity;
