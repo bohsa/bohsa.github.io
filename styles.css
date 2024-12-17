@@ -87,13 +87,13 @@ body, html {
     flex-direction: row;
     height: 100%;
     width: 100%;
-    padding: 1%;
+    padding: 3%;
 }
 
 /* Allarme */
 .allarme {
     width: 25%;
-    height: 50%;
+    height: 60%;
     background-color: #ffcccc;
     margin: 1%;
     text-align: center;
