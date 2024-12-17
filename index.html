@@ -67,12 +67,16 @@ function cercaLuogo(){
             const temperature = data.current.temp_c;
             const humidity = data.current.humidity;
             console.log(`temp: ${temperature}, humi: ${humidity}\n`);
-            if(temperature < 5.5 && humidity > 50){
+            var valore = 200;
+            valore -= temperature * 10;
+            valore -= 100 + humidity;
+            valore += data.current.isday*30;
+ 
+            if(valore > 100){
                 statoAllarme = 2;
             }else{
                 statoAllarme = 1;
             }
-
             var risultati_area_risultati = document.getElementById("area_risultati");
             risultati_area_risultati.innerHTML = 
 `nome luogo: ${data.location.name}<br>
