@@ -72,11 +72,11 @@ function cercaLuogo() {
             console.log(`temp: ${temperature}, humi: ${humidity}, condition: ${condition}\n`);
 
             // Algoritmo migliorato per valutare il rischio di scivolare
-            if (temperature <= 0 || condition.includes('ice') || condition.includes('snow') || condition.includes('sleet')) {
+            if (temperature <= 5 || condition.includes('ice') || condition.includes('snow') || condition.includes('sleet')) {
                 statoAllarme = 2; // Rischio elevato per ghiaccio o neve
             } else if (humidity > 85 && (condition.includes('rain') || condition.includes('drizzle') || condition.includes('fog'))) {
                 statoAllarme = 2; // Rischio elevato per umidità e pioggia/nebbia
-            } else if (humidity > 70 && temperature < 5) {
+            } else if (humidity > 70 && temperature < 10) {
                 statoAllarme = 2; // Rischio medio-elevato per alta umidità e basse temperature
             } else {
                 statoAllarme = 1; // Nessun rischio significativo
