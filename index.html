@@ -51,7 +51,7 @@ function updateAllarme() {
     }
 }
 
-function cercaLuogo(){
+function cercaLuogo() {
     const citta = document.getElementById("barraRicerca").value;
     const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=50aeef4823b642bfa16171055241012&q=' + citta + '&aqi=no';
 
@@ -66,17 +66,22 @@ function cercaLuogo(){
 
             const temperature = data.current.temp_c;
             const humidity = data.current.humidity;
-            console.log(`temp: ${temperature}, humi: ${humidity}\n`);
-            var valore = 200;
-            valore -= temperature * 10;
-            valore -= 100 + humidity;
-            valore += data.current.isday*30;
- 
-            if(valore > 100){
-                statoAllarme = 2;
-            }else{
-                statoAllarme = 1;
+            const isDay = data.current.is_day;
+            const condition = data.current.condition.text.toLowerCase();
+
+            console.log(`temp: ${temperature}, humi: ${humidity}, condition: ${condition}\n`);
+
+            // Algoritmo migliorato per valutare il rischio di scivolare
+            if (temperature <= 0 || condition.includes('ice') || condition.includes('snow') || condition.includes('sleet')) {
+                statoAllarme = 2; // Rischio elevato per ghiaccio o neve
+            } else if (humidity > 85 && (condition.includes('rain') || condition.includes('drizzle') || condition.includes('fog'))) {
+                statoAllarme = 2; // Rischio elevato per umidità e pioggia/nebbia
+            } else if (humidity > 70 && temperature < 5) {
+                statoAllarme = 2; // Rischio medio-elevato per alta umidità e basse temperature
+            } else {
+                statoAllarme = 1; // Nessun rischio significativo
             }
+
             var risultati_area_risultati = document.getElementById("area_risultati");
             risultati_area_risultati.innerHTML = 
 `nome luogo: ${data.location.name}<br>
@@ -86,6 +91,7 @@ orario locale: ${data.location.localtime}<br>
 ultimo aggiornamento dati: ${data.current.last_updated}<br>
 temperatura in celsius: ${data.current.temp_c}<br>
 umidità: ${data.current.humidity}%<br>
+condizioni atmosferiche: ${data.current.condition.text}<br>
 è giorno?: ${data.current.is_day}<br>
 <img src = "${data.current.condition.icon}"><br>
 `;
@@ -94,7 +100,5 @@ umidità: ${data.current.humidity}%<br>
         .catch(error => {
             console.error('Error:', error);
         });
-
 }
-
 </script>
